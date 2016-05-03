@@ -21,7 +21,7 @@ export default class ReactDataList extends React.Component {
         return (
             <div className="react-datalist-container">
                 {layoutstyle}
-                <input ref="theInput"
+                <textarea ref="theInput"
                         list={this.props.list}
                         value={this.state.filter}
                         className={"react-datalist-input"+extraClasses}
