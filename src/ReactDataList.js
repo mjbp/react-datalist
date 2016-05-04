@@ -21,7 +21,7 @@ export default class ReactDataList extends React.Component {
         return (
             <div className="react-datalist-container">
                 {layoutstyle}
-                <textarea ref="theInput"
+                {!!this.props.textarea ? <textarea ref="theInput"
                         list={this.props.list}
                         value={this.state.filter}
                         className={"react-datalist-input"+extraClasses}
@@ -31,7 +31,17 @@ export default class ReactDataList extends React.Component {
                         onClick={this.handleInputClick.bind(this)}
                         onChange={this.handleInputChange.bind(this)}
                         onKeyDown={this.handleInputKeyDown.bind(this)}
-                />
+                /> : <input ref="theInput"
+                        list={this.props.list}
+                        value={this.state.filter}
+                        className={"react-datalist-input"+extraClasses}
+                        placeholder={this.props.placeholder}
+                        onBlur={this.handleInputBlur.bind(this)}
+                        onKeyUp={this.handleInputKeyUp.bind(this)}
+                        onClick={this.handleInputClick.bind(this)}
+                        onChange={this.handleInputChange.bind(this)}
+                        onKeyDown={this.handleInputKeyDown.bind(this)}
+                />}
                 <DataList ref="theDatalist"
                     id={this.props.list}
                     hide={this.state.hide}
